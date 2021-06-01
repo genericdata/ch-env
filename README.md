@@ -1,5 +1,5 @@
 
-
+Before you begin, you must download the [Java JDK](https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html#license-lightbox) and place it in the build directory 
 - Java JDK (1.8.0_271): https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 - Python (3.8.6)
 - Perl (5.32.0)
