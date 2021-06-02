@@ -1,5 +1,6 @@
 
 Before you begin, you must download the [Java JDK](https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html#license-lightbox) and place it in the build directory 
+
 - Java JDK (1.8.0_271): https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 - Python (3.8.6)
 - Perl (5.32.0)
@@ -15,3 +16,4 @@ Before you begin, you must download the [Java JDK](https://www.oracle.com/java/t
 - MACS2 (version 2.2.7.1): https://github.com/macs3-project/MACS/releases
 - MEME (version 5.3.0 - please enable MPI if possible): http://meme-suite.org/doc/download.html
 - bedtools (version 2.29.2): https://bedtools.readthedocs.io/en/latest/content/installation.html
+- sra-tools (version 2.10.9) https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/
