@@ -66,7 +66,7 @@ RUN mkdir -p ${APPS_ROOT}/gem \
   && mv gem ${GEM_HOME}
 
 #########################################################################################
-#- MEME (version 5.3.0 - please enable MPI if possible): http://meme-suite.org/doc/download.html
+#- MEME (version 5.3.0 - MPI): http://meme-suite.org/doc/download.html
 ENV MEME_VERSION 5.3.0
 ENV MEME_HOME ${APPS_ROOT}/meme/${MEME_VERSION}
 ENV PATH ${MEME_HOME}/bin:${MEME_HOME}/libexec/meme-${MEME_VERSION}:$PATH
@@ -100,3 +100,14 @@ RUN mkdir -p ${APPS_ROOT}/meme \
   && make -j \
   && make install \
   && rm -Rf /meme-${MEME_VERSION}
+
+#########################################################################################
+#- SRA-TOOLS (version 2.10.9)
+ENV SRATOOLS_VERSION 2.10.9
+ENV SRATOOLS_HOME ${APPS_ROOT}/sratools/${SRATOOLS_VERSION}
+ENV PATH ${SRATOOLS_HOME}/bin:$PATH
+
+RUN mkdir -p ${APPS_ROOT}/sratools \
+  && curl -sSL https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/${SRATOOLS_VERSION}/sratoolkit.${SRATOOLS_VERSION}-centos_linux64.tar.gz \
+  | tar xz \
+  && mv sratoolkit.${SRATOOLS_VERSION}-centos_linux64 ${SRATOOLS_HOME}
