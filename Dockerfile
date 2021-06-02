@@ -111,3 +111,8 @@ RUN mkdir -p ${APPS_ROOT}/sratools \
   && curl -sSL https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/${SRATOOLS_VERSION}/sratoolkit.${SRATOOLS_VERSION}-centos_linux64.tar.gz \
   | tar xz \
   && mv sratoolkit.${SRATOOLS_VERSION}-centos_linux64 ${SRATOOLS_HOME}
+
+#########################################################################################
+#- emacs
+RUN dnf install -y emacs-nox \
+  && dnf clean -y all
