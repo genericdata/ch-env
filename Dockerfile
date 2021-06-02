@@ -2,14 +2,12 @@ FROM centos:centos8.2.2004
 
 ENV APPS_ROOT /apps
 RUN mkdir -p ${APPS_ROOT}
+
 #########################################################################################
 #- Java JDK (1.8.0_271): https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
-RUN dnf -y install \
-  java-1.8.0-openjdk \
-  java-1.8.0-openjdk-devel \
-  make \
-  gcc \
-  expat-devel \
+COPY jdk-8u271-linux-x64.rpm /tmp/jdk-8u271-linux-x64.rpm
+RUN yum -y localinstall /tmp/jdk-8u271-linux-x64.rpm \
+  && rm /tmp/jdk-8u271-linux-x64.rpm \
   && dnf -y clean all
 
 #########################################################################################
@@ -17,7 +15,12 @@ RUN dnf -y install \
 #- Perl module XML::Simple (version 2.25)
 ENV PERL_VERSION 5.32.0
 ENV XMLSIMPLE_VERSION 2.25
-RUN curl -sSL https://www.cpan.org/src/5.0/perl-${PERL_VERSION}.tar.gz | tar xz \
+RUN dnf -y install \
+  make \
+  gcc \
+  expat-devel \
+  && dnf -y clean all \
+  && curl -sSL https://www.cpan.org/src/5.0/perl-${PERL_VERSION}.tar.gz | tar xz \
   && cd perl-${PERL_VERSION} \
   && ./Configure -de \
   && make -j \
@@ -73,14 +76,22 @@ RUN dnf --enablerepo=PowerTools install -y ghostscript \
   openmpi \
   openmpi-devel \
   zlib-devel \
+  libxml2-devel \
   which \
-  && dnf -y clean all
+  && dnf -y clean all \
+  && cpanm install \
+    File::Which \
+    HTML::Template \
+    HTML::TreeBuilder \
+    JSON \
+    Log::Log4perl \
+    Math::CDF \
+    XML::Compile::SOAP11 \
+    XML::Compile::WSDL11 \
+    XML::Compile::Transport::SOAPHTTP
 
 ENV PATH /usr/lib64/openmpi/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/lib64/openmpi/lib:$LD_LIBRARY_PATH
-RUN echo "export PATH=$PATH:/usr/lib64/openmpi/bin" >> /etc/profile.d/openmpi.sh \
-  && echo "export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:$LD_LIBRARY_PATH" >> /etc/profile.d/openmpi.sh \
-  && chmod 0755 /etc/profile.d/openmpi.sh
 #------------------------------------
 RUN mkdir -p ${APPS_ROOT}/meme \
   && curl -sSL http://meme-suite.org/meme-software/${MEME_VERSION}/meme-${MEME_VERSION}.tar.gz | tar xz \
