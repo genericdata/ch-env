@@ -14,6 +14,6 @@ Before you begin, you must download the [Java JDK](https://www.oracle.com/java/t
 - samtools (version 1.11): http://www.htslib.org/download/
 - GEM (version 3.3): https://groups.csail.mit.edu/cgs/gem/versions.html
 - MACS2 (version 2.2.7.1): https://github.com/macs3-project/MACS/releases
-- MEME (version 5.3.0 - please enable MPI if possible): http://meme-suite.org/doc/download.html
+- MEME (version 5.3.0 - with MPI): http://meme-suite.org/doc/download.html
 - bedtools (version 2.29.2): https://bedtools.readthedocs.io/en/latest/content/installation.html
 - sra-tools (version 2.10.9) https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/
