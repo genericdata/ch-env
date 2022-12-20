@@ -4,6 +4,13 @@ ENV APPS_ROOT /apps
 RUN mkdir -p ${APPS_ROOT}
 
 #########################################################################################
+#- Java JDK (1.8.0_271): https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+COPY jdk-8u271-linux-x64.rpm /tmp/jdk-8u271-linux-x64.rpm
+RUN yum -y localinstall /tmp/jdk-8u271-linux-x64.rpm \
+  && rm /tmp/jdk-8u271-linux-x64.rpm \
+  && dnf -y clean all
+
+#########################################################################################
 #- Perl (5.32.0)
 #- Perl module XML::Simple (version 2.25)
 ENV PERL_VERSION 5.32.0
