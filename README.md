@@ -1,7 +1,11 @@
-# Docker container for specific computation environment
+# Computation environment (Docker)
 
 ## Installation
 Before you begin, you must download the [Java JDK](https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html#license-lightbox) and place it in the build directory 
+
+```
+docker build github.com/genericdata/ch-env#main
+```
 
 ## Software Versions
 - Java JDK (1.8.0_271): https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
