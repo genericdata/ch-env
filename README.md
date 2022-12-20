@@ -1,6 +1,6 @@
 # Computation environment (Docker)
 
-## Installation
+## Build Container
 Before you begin, you must download the [Java JDK](https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html#license-lightbox) and place it in the build directory 
 
 ```
